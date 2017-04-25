@@ -1,7 +1,7 @@
 /*
 *******FUNCIONES DEL PROYECTO 2*********
 *Salma Patricia Gutiérrez Rivera       *
-*11 de abril de 2017                   *
+*25 de abril de 2017                   *
 ****************************************
 Funciones utilizadas en el proyecto.
 */
@@ -9,17 +9,6 @@ Funciones utilizadas en el proyecto.
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-
-void imprimir_placa(float **placa, int n) {
-	int i,j;
-	
-	for(i=0;i<n;i++) {
-	    for(j=0;j<n;j++) {
-	        printf("%f\t", placa[i][j]);
-	    }
-	printf("\n");
-	}
-}
 
 /* La siguiente función muestra en pantalla los argumentos que
 necesita el programa si no se especifica un número adecuado de

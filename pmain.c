@@ -1,16 +1,12 @@
 /*
-*********PROYECTO 2. VERSIÓN 4**********
+***************PROYECTO 2***************
 *Salma Patricia Gutiérrez Rivera       *
-*17 de abril de 2017                   *
+*25 de abril de 2017                   *
 ****************************************
-Función main del Proyecto 2, cuarto bo- 
-rrador.
+Función main del Proyecto 2.
 Este programa simula la distribución de 
 temperaturas en una placa aislada usando
 el método de Gauss-Seidel.
-Esta versión crea archivos con los cam- 
-bios de temperatura que experimenta la 
-placa.
 */
 
 #include<stdio.h>
@@ -18,7 +14,6 @@ placa.
 #include<math.h>
 #include<string.h>
 
-void imprimir_placa(float **placa, int n);
 void pedir_args(int n);
 float **iniciar_placa(float t_izq, float t_sup, float t_der, float t_inf, int n);
 void aplicar_gauss(float **T, int n);
