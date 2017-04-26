@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	int cumple = 0; // Condición de paro
 	
 	int n = atoi(argv[5]); // Número de puntos de la placa
-	int n = sqrt(n); // Medida del lado de la placa, sin bordes
+	n = sqrt(n); // Medida del lado de la placa, sin bordes
 	n += 2; // Medida final de la placa
 	
 	/* Temperaturas inciales de la placa */
