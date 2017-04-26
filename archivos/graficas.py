@@ -1,27 +1,24 @@
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import imageio
-import os
-import pylab
 import numpy as np
 
-n = 29 # Número de iteraciones del programa
+N = 27 # Numero de archivos creados por el programa en C
+imagenes = [] # Lista para guardar las imagenes generadas
+nombres = [] # Lista para armar los nombres de las imagenes
+titulo = unicode('calentamiento.gif') # Nombre del gif que se creara
 
-# Crear imágenes con las placas
-for i in range(n):
-    data_img=np.loadtxt(str(i)+'.txt')
-    plt.gcf().clear()
-    plt.imshow(data_img)
-    plt.colorbar()
-    plt.savefig(str(i)+'.png')
+# Iterar sobre cada archivo
+for i in range(N):
+    # Crear imagenes con las placas
+    data_img=np.loadtxt(str(i)+'.txt') # Cargar archivo con el estado de la placa
+    plt.gcf().clear() # Limpiar grafico previo
+    plt.imshow(data_img) # Crear imagen
+    plt.colorbar()  # Mostrar la escala utilizada
+    plt.savefig(str(i)+'.png') # Guardar imagen
+    nombres.append(unicode(str(i)+".png")) # Guardar nombre de la imagen
 
-def hacer_gif(n, titulo = 'calentamiento.gif'):
-    imagenes = []
-    nombres = []
-    for i in range(n)
-        nombres.append(unicode(str(i)+".png"))
-    for nombre in nombres:
-        imagenes.append(imageio.imread(nombre))
-    imageio.mimsave(titulo, imagenes)
-
-hacer_gif(n)
+# Crear gif
+for nombre in nombres:
+    imagenes.append(imageio.imread(nombre)) # Anadir imagen a la lista
+    
+imageio.mimsave(titulo, imagenes) # Guardar gif
