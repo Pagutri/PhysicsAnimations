@@ -5,8 +5,8 @@
 ****************************************
 Función main del Proyecto 2.
 Este programa simula la distribución de 
-temperaturas en una placa aislada usando
-el método de Gauss-Seidel.
+temperaturas en una placa cuadrada ais- 
+da usando el método de Gauss-Seidel.
 */
 
 #include<stdio.h>
