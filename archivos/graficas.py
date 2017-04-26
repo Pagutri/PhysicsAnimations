@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import imageio
 import numpy as np
 
-N = 27 # Numero de archivos creados por el programa en C
+N = 30 # Numero de archivos creados por el programa en C
 imagenes = [] # Lista para guardar las imagenes generadas
 nombres = [] # Lista para armar los nombres de las imagenes
 titulo = unicode('calentamiento.gif') # Nombre del gif que se creara
