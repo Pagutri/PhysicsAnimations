@@ -24,34 +24,33 @@ void liberar_memoria(float **ptr, int n);
 
 int main(int argc, char *argv[])
 {
-	pedir_args(argc);
+		pedir_args(argc);
 	
-	/* Inicializar variables */
-	int max_iter = 1000;    // Número máximo de iteraciones
-	int iter = 1; // Contador de iteraciones
-	int cumple = 0; // Condición de paro
+		/* Inicializar variables */
+		int max_iter = 1000;    // Número máximo de iteraciones
+		int iter = 1; // Contador de iteraciones
+		int cumple = 0; // Condición de paro
 	
-	int n = atoi(argv[5]); // Número de puntos de la placa
-	n = sqrt(n); // Medida del lado de la placa, sin bordes
-	n += 2; // Medida final de la placa
+		int n = atoi(argv[5]); // Número de puntos de la placa
+		n = sqrt(n); // Medida del lado de la placa, sin bordes
+		n += 2; // Medida final de la placa
 	
-	/* Temperaturas inciales de la placa */
-	float **placa = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
-	float **placaVieja = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
+		/* Temperaturas inciales de la placa */
+		float **placa = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
+		float **placaVieja = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
 	
-	crear_archivo(0, placa, n);
+		crear_archivo(0, placa, n);
 	/* Ciclo que implementa el método de Gauss-Seidel */
-	while(iter<=max_iter && cumple==0)
-	{
-	    aplicar_gauss(placa, n);
-	    cumple = verificar_condicion(placa, placaVieja, n);
-	    copiar_a_vieja(placa, placaVieja, n);
-	    crear_archivo(iter, placa, n);
-	    iter++;
-	}
+		while(iter<=max_iter && cumple==0) {
+				aplicar_gauss(placa, n);
+				cumple = verificar_condicion(placa, placaVieja, n);
+				copiar_a_vieja(placa, placaVieja, n);
+				crear_archivo(iter, placa, n);
+				iter++;
+		}
 	
-	liberar_memoria(placa, n);
-	liberar_memoria(placaVieja, n);
+		liberar_memoria(placa, n);
+		liberar_memoria(placaVieja, n);
 	
- return 0;
+		return 0;
 } 
