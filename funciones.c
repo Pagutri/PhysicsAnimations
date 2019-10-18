@@ -9,7 +9,6 @@ Funciones utilizadas en el proyecto.
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-
 /* La siguiente función muestra en pantalla los argumentos que
 necesita el programa si no se especifica un número adecuado de
 ellos en la línea de comandos. */

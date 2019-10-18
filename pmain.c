@@ -25,6 +25,7 @@ void liberar_memoria(float **ptr, int n);
 int main(int argc, char *argv[])
 {
 		pedir_args(argc);
+		// TODO: Use char *argv[] + atoi from stdlib
 	
 		/* Inicializar variables */
 		int max_iter = 1000;    // Número máximo de iteraciones
