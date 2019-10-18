@@ -36,8 +36,11 @@ int main(int argc, char *argv[])
 		n += 2; // Medida final de la placa
 	
 		/* Temperaturas inciales de la placa */
-		float **placa = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
-		float **placaVieja = iniciar_placa(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), n);
+		float **placa = iniciar_placa(atof(argv[1]), atof(argv[2]),
+									  atof(argv[3]), atof(argv[4]), n);
+
+		float **placaVieja = iniciar_placa(atof(argv[1]), atof(argv[2]),
+										   atof(argv[3]), atof(argv[4]), n);
 	
 		crear_archivo(0, placa, n);
 	/* Ciclo que implementa el método de Gauss-Seidel */
