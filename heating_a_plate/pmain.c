@@ -1,12 +1,7 @@
 /*
-***************PROYECTO 2***************
-*Salma Patricia Gutiérrez Rivera       *
-*25 de abril de 2017                   *
-****************************************
-Función main del Proyecto 2.
-Este programa simula la distribución de 
-temperaturas en una placa cuadrada ais- 
-da usando el método de Gauss-Seidel.
+This program simulates the temperature distribution
+of an isolated square plate using the Gauss-Seidel
+method.
 */
 
 #include<stdio.h>
@@ -14,47 +9,47 @@ da usando el método de Gauss-Seidel.
 #include<math.h>
 #include<string.h>
 
-void pedir_args(int n);
-float **iniciar_placa(float t_izq, float t_sup, float t_der, float t_inf, int n);
-void aplicar_gauss(float **T, int n);
-void copiar_a_vieja(float **nueva, float **vieja, int n);
-int verificar_condicion(float **Tnue, float **Tvie, int n);
-void crear_archivo(int k, float **placa, int n);
-void liberar_memoria(float **ptr, int n);
+void request_args(int n);
+float **initialize_plate(float left_temp, float upper_temp, float right_temp,\
+                         float lower_temp, int n);
+void apply_gauss_seidel(float **T, int n);
+void copy_to_old_plate(float **new, float **old, int n);
+int verify_stop_condition(float **Tnue, float **Tvie, int n);
+void create_file(int k, float **placa, int n);
+void free_memory(float **ptr, int n);
 
 int main(int argc, char *argv[])
 {
-		pedir_args(argc);
-		// TODO: Use char *argv[] + atoi from stdlib
+	request_args(argc);
 	
-		/* Inicializar variables */
-		int max_iter = 1000;    // Número máximo de iteraciones
-		int iter = 1; // Contador de iteraciones
-		int cumple = 0; // Condición de paro
+	int max_iter = 1000;
+	int iter = 1;
+	int meets_condition = 0;
 	
-		int n = atoi(argv[5]); // Número de puntos de la placa
-		n = sqrt(n); // Medida del lado de la placa, sin bordes
-		n += 2; // Medida final de la placa
+	int n = atoi(argv[5]); /* Number of sites in the plate */
+	n = sqrt(n);
+	n += 2; /* Side length of the plate, including bounds */
 	
-		/* Temperaturas inciales de la placa */
-		float **placa = iniciar_placa(atof(argv[1]), atof(argv[2]),
-									  atof(argv[3]), atof(argv[4]), n);
+	/* Initial temperatures of the plate */
+	float **plate = initialize_plate(atof(argv[1]), atof(argv[2]),
+								  atof(argv[3]), atof(argv[4]), n);
 
-		float **placaVieja = iniciar_placa(atof(argv[1]), atof(argv[2]),
+	float **oldPlate = initialize_plate(atof(argv[1]), atof(argv[2]),
 										   atof(argv[3]), atof(argv[4]), n);
 	
-		crear_archivo(0, placa, n);
-	/* Ciclo que implementa el método de Gauss-Seidel */
-		while(iter<=max_iter && cumple==0) {
-				aplicar_gauss(placa, n);
-				cumple = verificar_condicion(placa, placaVieja, n);
-				copiar_a_vieja(placa, placaVieja, n);
-				crear_archivo(iter, placa, n);
-				iter++;
-		}
+	create_file(0, plate, n);
+
+	while(iter<=max_iter && meets_condition==0)
+	{
+		apply_gauss_seidel(plate, n);
+		meets_condition = verify_stop_condition(plate, oldPlate, n);
+		copy_to_old_plate(plate, oldPlate, n);
+		create_file(iter, plate, n);
+		iter++;
+	}
 	
-		liberar_memoria(placa, n);
-		liberar_memoria(placaVieja, n);
+	free_memory(plate, n);
+	free_memory(oldPlate, n);
 	
-		return 0;
+return 0;
 } 
