@@ -20,21 +20,26 @@ void free_memory(float **ptr, int n);
 
 int main(int argc, char *argv[])
 {
+	int max_iter;
+	int iter;
+	int meets_condition;
+	int n;
+	float **plate;
+	float **oldPlate;
+
 	request_args(argc);
-	
-	int max_iter = 1000;
-	int iter = 1;
-	int meets_condition = 0;
-	
-	int n = atoi(argv[5]); /* Number of sites in the plate */
+	max_iter = 1000;
+	iter = 1;
+	meets_condition = 0;
+	n = atoi(argv[5]); /* Number of sites in the plate */
 	n = sqrt(n);
 	n += 2; /* Side length of the plate, including bounds */
 	
 	/* Initial temperatures of the plate */
-	float **plate = initialize_plate(atof(argv[1]), atof(argv[2]),
+	plate = initialize_plate(atof(argv[1]), atof(argv[2]),
 								  atof(argv[3]), atof(argv[4]), n);
 
-	float **oldPlate = initialize_plate(atof(argv[1]), atof(argv[2]),
+	oldPlate = initialize_plate(atof(argv[1]), atof(argv[2]),
 										   atof(argv[3]), atof(argv[4]), n);
 	
 	create_file(0, plate, n);

@@ -22,16 +22,16 @@ float **initialize_plate(float left_temp, float upper_temp, float right_temp,\
     int i, j;
     float **plate;
 
-    plate = (float **)malloc(n*sizeof(float*));
-    for (i=0;i<n;i++)
-        plate[i] = (float*)malloc(n*sizeof(float));
+    plate = (float **)malloc(n * sizeof(float*));
+    for (i = 0; i < n; i++)
+        plate[i] = (float*)malloc(n * sizeof(float));
 
-    for(i=0;i<n;i++)
+    for(i = 0; i < n; i++)
     {
-        for(j=0;j<n;j++)
+        for(j = 0; j < n; j++)
         {
-            if(i==0) plate[i][j] = upper_temp;
-            else if(i==n-1) plate[i][j] = lower_temp;
+            if(i == 0) plate[i][j] = upper_temp;
+            else if(i == n - 1) plate[i][j] = lower_temp;
             else plate[i][j] = 0.0;
         }
         plate[i][0] = left_temp;
@@ -47,11 +47,11 @@ the temperature of its neighbours. */
 void apply_gauss_seidel(float **T, int n)
 {
     int i, j;
-    for(i=1;i<n-1;i++)
+    for(i = 1; i < n - 1; i++)
     {
-        for(j=1;j<n-1;j++)
+        for(j = 1; j < n - 1; j++)
         {
-            T[i][j] = (T[i+1][j] + T[i-1][j] + T[i][j+1] + T[i][j-1])/4.0;
+            T[i][j] = (T[i+1][j] + T[i-1][j] + T[i][j+1] + T[i][j-1]) / 4.0;
         }
     }
 }
@@ -59,9 +59,9 @@ void apply_gauss_seidel(float **T, int n)
 void copy_to_old_plate(float **new, float **old, int n)
 {
     int i, j;
-    for(i=1;i<n-1;i++)
+    for(i = 1; i < n - 1; i++)
     {
-        for(j=1;j<n-1;j++) old[i][j] = new[i][j];
+        for(j = 1; j < n - 1; j++) old[i][j] = new[i][j];
     }
 }
 
@@ -91,14 +91,15 @@ int verify_stop_condition(float **Tnew, float **Told, int n)
 void create_file(int k, float **placa, int n)
 {
     char name[17];
-    int i,j;
+    int i, j;
+    FILE* ptr;
     
     sprintf(name, "files/%i.txt", k);
-    FILE* ptr = fopen(name, "w");
+    ptr = fopen(name, "w");
     
-    for(i=0;i<n;i++)
+    for(i = 0; i < n; i++)
     {
-        for(j=0;j<n;j++)
+        for(j = 0; j < n; j++)
         {
             fprintf(ptr, "%f ", placa[i][j]);
         }
@@ -110,6 +111,8 @@ void create_file(int k, float **placa, int n)
 
 void free_memory(float **ptr, int n)
 {
-    for(int i=0;i<n;i++) free(ptr[i]);
+    int i;
+
+    for(i = 0; i < n; i++) free(ptr[i]);
     free(ptr);
 }
