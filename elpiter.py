@@ -1,9 +1,6 @@
 """
-Este programa es mi implementacion del codigo
-que amablemente proporciona Peter Collingridge
-en el sitio
+My version of the code found in
 http://www.petercollingridge.co.uk/book/export/html/6
-Si algo no funciona, yo no fui.
 """
 
 import pygame
