@@ -6,7 +6,7 @@ __heating_a_plate__
 
 A gif showing the heating of a square plate.
 
-_Instructions:_ Run the C code using the Makefile (you need to hace gcc). Then, run the python code make_gif.py
+_Instructions:_ Run the C code using the Makefile (you need to hace gcc). Then, run the python code make_gif.py. Check that N, the number of files created by the C code, is correct. I still don't know how to do it automatically.
 
 __double_pendulum.py__
 
