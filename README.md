@@ -8,6 +8,12 @@ A gif showing the heating of a square plate.
 
 _Instructions:_ Run the C code using the Makefile (you need to have gcc). Then, run the python code make_gif.py. Check that N, the number of files created by the C code, is correct. I still don't know how to do it automatically.
 
+__invasion_percolation__
+
+Image of a coffe stain, using the _invasion percolation_ algorithm.
+
+_Instructions:_ Run the C code using the Makefile (you need to have gcc). Then, run the python code plot_frac.py to generate an image of a beatiful stain :D
+
 __double_pendulum.py__
 
 Animation of a double pendulum with random initial angles using pygame.
